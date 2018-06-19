@@ -61,6 +61,18 @@
 				$('#navPanel')
 					.css('transition', 'none');
 
-	});
+        loadAll = false;
 
+        barChartLabels = [];
+
+        barChartData = [];
+
+        options = {
+            legend : {
+                labels : {
+                    fontColor : '#ffffff'
+                }
+            }
+        };
+	});
 })(jQuery);
