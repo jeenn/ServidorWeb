@@ -6,10 +6,11 @@
 -->
 <html>
 	<head>
-		<title>Theory by TEMPLATED</title>
+		<title>Elecciones presidenciales</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="stylesheet" href="assets/css/main.css"/>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	</head>
 	<body>
 
@@ -27,25 +28,25 @@
 					<div class="flex flex-4">
 						<div class="box person">
 							<div class="image round">
-								<img src="images/pic03.jpg" alt="Ricardo Anaya" />
+								<img src="images/anaya.jpg" alt="Ricardo Anaya" />
 							</div>
 							<h3>Ricardo Anaya</h3>
 						</div>
 						<div class="box person">
 							<div class="image round">
-								<img src="images/pic04.jpg" alt="Meade" />
+								<img src="images/meade.jpg" alt="Meade" />
 							</div>
 							<h3>Jos&eacute; Antonio Meade</h3>
 						</div>
 						<div class="box person">
 							<div class="image round">
-								<img src="images/pic05.jpg" alt="Bronco" />
+								<img src="../images/pic03.jpg" alt="Bronco" />
 							</div>
 							<h3>Jaime Rodr&iacute;guez Calder&oacute;n</h3>
 						</div>
 						<div class="box person">
 							<div class="image round">
-								<img src="images/pic06.jpg" alt="AMLO" />
+								<img src="images/pic04.jpg" alt="AMLO" />
 							</div>
 							<h3>Andr&eacute;s Manuel L&oacute;pez Obrador</h3>
 						</div>
@@ -61,28 +62,90 @@
 					</header>
 					<div class="flex flex-2">
 						<article>
-							<div class="image fit">
-								<img src="images/pic01.jpg" alt="Pic 01" />
-							</div>
 							<header>
-								<h3>Praesent placerat magna</h3>
+								<h3>Votos por partido</h3>
 							</header>
-							<p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor lorem ipsum.</p>
-							<footer>
-								<a href="#" class="button special">More</a>
-							</footer>
+							<p>En la siguiente gr&aacute;fica se muestra los votos por partido que se estan generando en el pa&iacute;s.</p>
+							<script type="text/javascript">
+                                google.charts.load("current", {packages:['corechart']});
+                                google.charts.setOnLoadCallback(drawChart);
+                                function drawChart() {
+                                    var data = google.visualization.arrayToDataTable([
+                                        ["Partidos", "Votos", { role: "style" } ],
+                                        ["PAN", 8.94, "#0a388e"],
+                                        ["PRD", 10.49, "#ede101"],
+                                        ["Movimiento ciudadano", 19.30, "#f5822c"],
+                                        ["PRI", 31.45, "color: #d43922"],
+                                        ["Partido Verde", 31.45, "color: #50b747"],
+                                        ["Nueva alianza", 31.45, "color: #00b6be"],
+                                        ["El Bronco", 31.45, "color: #691458"],
+                                        ["Morena", 31.45, "color: #c0331b"],
+                                        ["PT", 31.45, "color: #f0902c"],
+                                        ["Encuentro social", 31.45, "color: #6f6f6f"]
+                                    ]);
+
+                                    var view = new google.visualization.DataView(data);
+                                    view.setColumns([0, 1,
+                                        { calc: "stringify",
+                                            sourceColumn: 1,
+                                            type: "string",
+                                            role: "annotation" },
+                                        2]);
+
+                                    var options = {
+                                        title: "Votos por partido",
+                                        width: 500,
+                                        height: 300,
+                                        chartArea: {'width': '100%', 'height': '70%'},
+                                        bar: {groupWidth: "85%"},
+                                        legend: { position: "none" }
+                                    };
+                                    var chart = new google.visualization.ColumnChart(document.getElementById("char_partido"));
+                                    chart.draw(view, options);
+                                }
+							</script>
+							<div id="char_partido" style="width: 25rem; height: 20rem;"></div>
 						</article>
+						<br>
+						<br>
 						<article>
-							<div class="image fit">
-								<img src="images/pic02.jpg" alt="Pic 02" />
-							</div>
 							<header>
-								<h3>Fusce pellentesque tempus</h3>
+								<h3>Votos por candidato</h3>
 							</header>
-							<p>Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel, velit. Pellentesque egestas sem. Suspendisse commodo ullamcorper magna non comodo sodales tempus.</p>
-							<footer>
-								<a href="#" class="button special">More</a>
-							</footer>
+							<p>En la siguiente gr&aacute;fica se muestran los votos por candidato que se estan generando en el pa&iacute;s.</p>
+							<script type="text/javascript">
+                                google.charts.load("current", {packages:['corechart']});
+                                google.charts.setOnLoadCallback(drawChart);
+                                function drawChart() {
+                                    var data = google.visualization.arrayToDataTable([
+                                        ["Candidatos", "Votos", { role: "style" } ],
+                                        ["Ricardo Anaya", 8.94, "#0a388e"],
+                                        ["J.A. Meade", 10.49, "#d43922"],
+                                        ["J.H.R. Calderón 'El Bronco'", 19.30, "#691458"],
+                                        ["AMLO", 31.45, "color: #c0331b"]
+                                    ]);
+
+                                    var view = new google.visualization.DataView(data);
+                                    view.setColumns([0, 1,
+                                        { calc: "stringify",
+                                            sourceColumn: 1,
+                                            type: "string",
+                                            role: "annotation" },
+                                        2]);
+
+                                    var options = {
+                                        title: "Votos por candidato",
+                                        width: 500,
+                                        height: 300,
+                                        chartArea: {'width': '100%', 'height': '70%'},
+                                        bar: {groupWidth: "85%"},
+                                        legend: { position: "none" }
+                                    };
+                                    var chart = new google.visualization.ColumnChart(document.getElementById("char_candidato"));
+                                    chart.draw(view, options);
+                                }
+							</script>
+							<div id="char_candidato" style="width: 25rem; height: 20rem;"></div>
 						</article>
 					</div>
 				</div>
